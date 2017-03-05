@@ -6,6 +6,7 @@ class Account:
     __URL = "http://api.scrumsaga.com/v1"
     __pathLogin = "/login"
     __pathViewData = "/acctData"
+    __pathViewDiagram = "/acctDiagram"
     __pathUpdateData = "/acctDataUpdate"
     __pathRmData = "/acctDataRm"
     __pathViewLicense = "/acctLicense"
@@ -28,6 +29,15 @@ class Account:
 
     def view_data(self):
         URI = Account.__URL +  Account.__pathViewData
+        hdr={'Authorization': 'JWT '+self.token }
+        try:
+            r = requests.post(URI, headers=hdr)
+            print( r.json()['data'] )
+        except:
+            print('there was a problem')
+
+    def view_diagram(self):
+        URI = Account.__URL +  Account.__pathViewDiagram
         hdr={'Authorization': 'JWT '+self.token }
         try:
             r = requests.post(URI, headers=hdr)
