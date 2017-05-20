@@ -54,7 +54,7 @@ class Project(dict):
                 r = requests.post(URI, data = payload, headers=hdr)
                 rec=r.json()['data']
                 prec=pandas.DataFrame(rec)
-                print(metric_group.upper(),"group records: ",prec.shape[1])
+                print(metric_group.upper(),"group records: ",prec.shape[0])
                 return prec
             else:
                 print(metric_group+" is not an available group")
